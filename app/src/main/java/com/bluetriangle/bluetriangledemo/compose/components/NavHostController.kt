@@ -1,8 +1,5 @@
 package com.bluetriangle.bluetriangledemo.compose.components
 
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
@@ -14,6 +11,7 @@ import androidx.navigation.navigation
 @Composable
 fun NavHostContainer(
     title: MutableState<String>,
+    showBackIcon: MutableState<Boolean>,
     navController: NavHostController,
     navItems: List<NavItem>,
     modifier:Modifier = Modifier
@@ -33,6 +31,7 @@ fun NavHostContainer(
                     navItem.destinations.map { destination ->
                         composable(destination.route, content = {
                             title.value = destination.label
+                            showBackIcon.value = destination.showBackIcon
                             destination.screen(it)
                         })
                     }

@@ -25,6 +25,10 @@ class ProductsViewModel @Inject constructor(private val productsRepository: Prod
     val products: LiveData<List<Product>> = _products
 
     init {
+        loadProducts()
+    }
+
+    fun loadProducts() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val products = productsRepository.listProducts(skipCache = true)

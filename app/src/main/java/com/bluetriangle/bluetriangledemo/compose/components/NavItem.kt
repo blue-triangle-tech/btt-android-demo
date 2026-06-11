@@ -13,6 +13,7 @@ data class NavItem(
     data class Destination(
         val label: String,
         val route: String,
-        val screen: @Composable (NavBackStackEntry)->Unit
+        var showBackIcon: Boolean = false,
+        val screen: @Composable (NavBackStackEntry)->Unit,
     )
 }

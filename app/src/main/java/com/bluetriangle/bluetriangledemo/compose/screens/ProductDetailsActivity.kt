@@ -18,12 +18,14 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -41,6 +43,7 @@ import androidx.core.content.IntentCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.bluetriangle.analytics.Tracker
 import com.bluetriangle.bluetriangledemo.DemoApplication
+import com.bluetriangle.bluetriangledemo.R
 import com.bluetriangle.bluetriangledemo.compose.components.ErrorAlertDialog
 import com.bluetriangle.bluetriangledemo.compose.components.MemoryWarningDialog
 import com.bluetriangle.bluetriangledemo.compose.theme.BlueTriangleComposeDemoTheme
@@ -51,6 +54,7 @@ import com.bluetriangle.bluetriangledemo.ui.products.ProductDetailViewModel
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.bluetriangle.bluetriangledemo.utils.MemoryHolder
+import com.bumptech.glide.integration.compose.placeholder
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -79,7 +83,16 @@ class ProductDetailsActivity : ComponentActivity() {
                     }
                 }
             BlueTriangleComposeDemoTheme {
-                Scaffold(topBar = { TopAppBar(title = { Text(text = "Product Details") }) }) {
+                Scaffold(topBar = {
+                    TopAppBar(
+                        title = { Text("Product Details") },
+                        navigationIcon = {
+                            IconButton(onClick = { finish() }) {
+                                Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+                            }
+                        }
+                    )
+                }) {
                     ProductDetails(it, product!!)
                 }
                 memoryWarningDialog.value?.let {
@@ -122,7 +135,8 @@ class ProductDetailsActivity : ComponentActivity() {
                                 .fillMaxWidth()
                                 .height(300.dp)
                                 .clip(RoundedCornerShape(8.dp)),
-                            contentScale = ContentScale.Crop
+                            contentScale = ContentScale.Crop,
+                            failure = placeholder(R.drawable.ic_error)
                         )
                         Spacer(modifier = Modifier.width(20.dp))
                         Column(
@@ -191,21 +205,5 @@ class ProductDetailsActivity : ComponentActivity() {
     override fun onPause() {
         super.onPause()
         MemoryHolder.clearMemory()
-    }
-}
-
-@Composable
-fun Greeting3(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview3() {
-    BlueTriangleComposeDemoTheme {
-        Greeting3("Android")
     }
 }

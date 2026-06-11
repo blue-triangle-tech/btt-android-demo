@@ -44,6 +44,7 @@ import com.bluetriangle.bluetriangledemo.data.CartItem
 import com.bluetriangle.bluetriangledemo.ui.cart.CartViewModel
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
+import com.bumptech.glide.integration.compose.placeholder
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -116,7 +117,8 @@ fun CartListItem(viewModel: CartViewModel, cartItem: CartItem) {
                     ),
                 model = cartItem.productReference?.image,
                 contentDescription = cartItem.productReference?.description,
-                contentScale = ContentScale.Crop
+                contentScale = ContentScale.Crop,
+                failure = placeholder(R.drawable.ic_error)
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(text = cartItem.productReference?.name ?: "", maxLines = 1)

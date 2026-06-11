@@ -7,7 +7,12 @@ plugins {
     id("kotlin-parcelize")
     id("kotlin-kapt")
     id("com.google.devtools.ksp")
+    //id("com.github.blue-triangle-tech.btt-gradle-plugin") version "1.0.6"
 }
+
+//btt {
+//    composeNavigationInjectionEnabled = true
+//}
 
 android {
     namespace = "com.bluetriangle.bluetriangledemo"
@@ -17,8 +22,8 @@ android {
         applicationId = "com.bluetriangle.bluetriangledemo"
         minSdk = 21
         targetSdk = 34
-        versionCode = 15
-        versionName = "2.11.0"
+        versionCode = 16
+        versionName = "2.12.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -30,6 +35,7 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
+            //isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -67,12 +73,12 @@ android {
         jvmTarget = "18"
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.0"
+        kotlinCompilerExtensionVersion = "1.5.14"
     }
 }
 
 dependencies {
-    implementation(libs.btt.android.sdk) {
+    implementation(libs.fork.btt.android.sdk) {
         exclude("com.squareup.okhttp3", "okhttp-bom")
     }
     implementation(libs.core.ktx)
@@ -114,6 +120,7 @@ dependencies {
     implementation(libs.ui)
     implementation(libs.ui.graphics)
     implementation(libs.ui.tooling.preview)
+    debugImplementation(libs.ui.tooling)
     implementation(libs.material.android)
     implementation(libs.fragment.ktx)
     implementation(libs.navigation.compose)
