@@ -7,12 +7,7 @@ plugins {
     id("kotlin-parcelize")
     id("kotlin-kapt")
     id("com.google.devtools.ksp")
-    //id("com.github.blue-triangle-tech.btt-gradle-plugin") version "1.0.6"
 }
-
-//btt {
-//    composeNavigationInjectionEnabled = true
-//}
 
 android {
     namespace = "com.bluetriangle.bluetriangledemo"
