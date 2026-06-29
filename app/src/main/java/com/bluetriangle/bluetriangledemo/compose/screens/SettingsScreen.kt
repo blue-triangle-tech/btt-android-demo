@@ -61,7 +61,7 @@ fun SettingsScreen(viewModel: SettingsViewModel = viewModel()) {
     var websiteUrlDialogOpen by rememberSaveable {
         mutableStateOf(false)
     }
-    BttTimerEffect(screenName = "Settings Tab")
+    //BttTimerEffect(screenName = "Settings Tab")
     Column(
         modifier = Modifier
             .fillMaxSize()

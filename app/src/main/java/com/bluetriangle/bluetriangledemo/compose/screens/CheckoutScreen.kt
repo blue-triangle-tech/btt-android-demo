@@ -22,7 +22,7 @@ import com.bluetriangle.bluetriangledemo.tests.HeavyLoopTest
 
 @Composable
 fun CheckoutScreen(checkoutId: String) {
-    BttTimerEffect(screenName = "Checkout_Screen")
+    //BttTimerEffect(screenName = "Checkout_Screen")
     val navController = rememberNavController()
 
     Box(Modifier.fillMaxSize()) {

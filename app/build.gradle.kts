@@ -3,21 +3,19 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.daggerHiltAndroid)
     alias(libs.plugins.safeargs.kotlin)
-    id("kotlin-android")
     id("kotlin-parcelize")
-    id("kotlin-kapt")
     id("com.google.devtools.ksp")
     id("com.github.blue-triangle-tech.btt-gradle-plugin")
 }
 
 android {
     namespace = "com.bluetriangle.bluetriangledemo"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.bluetriangle.bluetriangledemo"
         minSdk = 21
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 16
         versionName = "2.12.0"
 
@@ -31,7 +29,6 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            //isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -69,7 +66,7 @@ android {
         jvmTarget = "18"
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.14"
+        kotlinCompilerExtensionVersion = "1.5.0"
     }
 }
 
@@ -90,7 +87,7 @@ dependencies {
 
     implementation(libs.hilt.android)
     implementation(libs.activity.ktx)
-    kapt(libs.hilt.compiler)
+    ksp(libs.hilt.compiler)
 
     implementation(platform(libs.okhttp.bom))
     implementation(libs.okhttp)
@@ -132,9 +129,4 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-}
-
-// Allow references to generated code
-kapt {
-    correctErrorTypes = true
 }

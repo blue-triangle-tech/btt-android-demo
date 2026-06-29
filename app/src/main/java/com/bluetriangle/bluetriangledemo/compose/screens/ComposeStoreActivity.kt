@@ -19,7 +19,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.outlined.ShoppingCart
 import androidx.compose.runtime.Composable
@@ -68,7 +68,7 @@ class ComposeStoreActivity : ComponentActivity() {
                         title = { Text(text = title.value) },
                         navigationIcon = {
                             if (showBackIcon.value) IconButton(onClick = { onBackPressedDispatcher.onBackPressed() }) {
-                                Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+                                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
                             } else null
                         })
                 }, bottomBar = {
