@@ -7,6 +7,7 @@ plugins {
     id("kotlin-parcelize")
     id("kotlin-kapt")
     id("com.google.devtools.ksp")
+    id("com.github.blue-triangle-tech.btt-gradle-plugin")
 }
 
 android {
