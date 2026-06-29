@@ -8,6 +8,11 @@ plugins {
     id("com.github.blue-triangle-tech.btt-gradle-plugin")
 }
 
+bttOptions {
+    composeNavigationInjectionEnabled = true
+    debugLog = true
+}
+
 android {
     namespace = "com.bluetriangle.bluetriangledemo"
     compileSdk = 35
