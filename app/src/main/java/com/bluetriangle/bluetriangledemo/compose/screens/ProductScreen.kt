@@ -72,7 +72,7 @@ fun ProductsScreen(productsViewModel: ProductsViewModel = hiltViewModel()) {
             })
         },
         errorHandler = productsViewModel.errorHandler,
-        gridView = false
+        gridView = true
     )
 }
 

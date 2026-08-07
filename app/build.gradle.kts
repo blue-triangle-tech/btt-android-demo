@@ -1,11 +1,11 @@
 plugins {
     alias(libs.plugins.androidApplication)
-    alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.daggerHiltAndroid)
     alias(libs.plugins.safeargs.kotlin)
-    id("kotlin-parcelize")
+    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.parcelize)
     id("com.google.devtools.ksp")
-    id("com.github.blue-triangle-tech.btt-gradle-plugin")
+    id("com.github.blue-triangle-tech.btt-gradle-plugin") version "1.0.0"
 }
 
 bttOptions {
@@ -15,12 +15,12 @@ bttOptions {
 
 android {
     namespace = "com.bluetriangle.bluetriangledemo"
-    compileSdk = 35
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.bluetriangle.bluetriangledemo"
         minSdk = 21
-        targetSdk = 35
+        targetSdk = 37
         versionCode = 16
         versionName = "2.12.0"
 
@@ -62,16 +62,11 @@ android {
         dataBinding = true
         compose = true
         buildConfig = true
+        resValues = true
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_18
         targetCompatibility = JavaVersion.VERSION_18
-    }
-    kotlinOptions {
-        jvmTarget = "18"
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.0"
     }
 }
 
@@ -80,6 +75,7 @@ dependencies {
         exclude("com.squareup.okhttp3", "okhttp-bom")
     }
     implementation(libs.core.ktx)
+    implementation(libs.kotlin.parcelize.runtime)
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.constraintlayout)
