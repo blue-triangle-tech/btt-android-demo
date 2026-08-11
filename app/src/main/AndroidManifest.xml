@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" >
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -17,13 +17,17 @@
         tools:ignore="UnusedAttribute" >
         <activity
             android:name=".layout.ConfigurationLayoutActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="@string/configuration"
+            android:theme="@style/Theme.BlueTriangleDemo.NoActionBar" />
         <activity
             android:name=".compose.screens.ConfigurationComposeActivity"
             android:exported="false" />
         <activity
             android:name=".layout.HybridDemoLayoutActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="@string/hybrid_demo"
+            android:theme="@style/Theme.BlueTriangleDemo.NoActionBar" />
         <activity
             android:name=".compose.screens.ComposeAboutActivity"
             android:exported="false" />
@@ -39,7 +43,8 @@
         <activity
             android:name=".layout.StoreActivity"
             android:exported="true"
-            android:label="@string/title_activity_store" />
+            android:label="@string/title_activity_store"
+            android:theme="@style/Theme.BlueTriangleDemo.NoActionBar" />
         <activity android:name=".compose.screens.ComposeStoreActivity" />
         <activity android:name=".compose.screens.ProductDetailsActivity" />
     </application>

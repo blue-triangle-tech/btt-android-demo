@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bluetriangle.bluetriangledemo.TrackedFragment
 import com.bluetriangle.bluetriangledemo.adapters.ProductAdapter
@@ -13,6 +14,9 @@ import com.bluetriangle.bluetriangledemo.data.Product
 import com.bluetriangle.bluetriangledemo.databinding.FragmentProductsBinding
 import com.bluetriangle.bluetriangledemo.utils.AlertDialogState
 import com.bluetriangle.bluetriangledemo.utils.AlertView
+import com.bluetriangle.bluetriangledemo.utils.PRODUCTS_GRID_SPAN_COUNT
+import com.bluetriangle.bluetriangledemo.utils.PRODUCTS_LAYOUT
+import com.bluetriangle.bluetriangledemo.utils.ProductsLayout
 import com.bluetriangle.bluetriangledemo.utils.showAlert
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -35,7 +39,13 @@ class ProductsFragment : TrackedFragment(), AlertView {
         }
 
         binding.productsList.apply {
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            layoutManager = when (PRODUCTS_LAYOUT) {
+                ProductsLayout.LIST ->
+                    LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+
+                ProductsLayout.GRID ->
+                    GridLayoutManager(context, PRODUCTS_GRID_SPAN_COUNT)
+            }
             adapter = productAdapter
         }
 

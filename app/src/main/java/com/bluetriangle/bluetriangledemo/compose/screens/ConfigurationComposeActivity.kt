@@ -26,7 +26,6 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Switch
 import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.runtime.Composable
@@ -45,6 +44,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.bluetriangle.bluetriangledemo.ConfigurationViewModel
 import com.bluetriangle.bluetriangledemo.R
+import com.bluetriangle.bluetriangledemo.compose.components.InsetAwareTopAppBar
 import com.bluetriangle.bluetriangledemo.compose.theme.BlueTriangleComposeDemoTheme
 import com.bluetriangle.bluetriangledemo.compose.theme.outlineVariant
 import dagger.hilt.android.AndroidEntryPoint
@@ -57,7 +57,7 @@ class ConfigurationComposeActivity : ComponentActivity() {
             val viewModel by viewModels<ConfigurationViewModel>()
             BlueTriangleComposeDemoTheme {
                 Scaffold(topBar = {
-                    TopAppBar(title = { Text(text = getString(R.string.configuration)) },
+                    InsetAwareTopAppBar(title = { Text(text = getString(R.string.configuration)) },
                         navigationIcon = {
                             IconButton(onClick = {
                                 onBackPressedDispatcher.onBackPressed()

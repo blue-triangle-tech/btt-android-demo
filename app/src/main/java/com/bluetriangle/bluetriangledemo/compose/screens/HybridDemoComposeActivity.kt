@@ -13,7 +13,6 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowBack
@@ -27,6 +26,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
+import com.bluetriangle.bluetriangledemo.compose.components.InsetAwareTopAppBar
 import com.bluetriangle.bluetriangledemo.utils.BTTWebViewClient
 import com.bluetriangle.bluetriangledemo.DemoApplication.Companion.DEMO_WEBSITE_URL
 import com.bluetriangle.bluetriangledemo.R
@@ -47,7 +47,7 @@ class ComposeAboutActivity : ComponentActivity() {
             }
             BlueTriangleComposeDemoTheme {
                 Scaffold(topBar = {
-                    TopAppBar(title = { Text(text = title, maxLines = 1, overflow = TextOverflow.Ellipsis) }, navigationIcon = {
+                    InsetAwareTopAppBar(title = { Text(text = title, maxLines = 1, overflow = TextOverflow.Ellipsis) }, navigationIcon = {
                         IconButton(onClick = {
                             onBackPressedDispatcher.onBackPressed()
                         }, modifier = Modifier.padding(8.dp)) {

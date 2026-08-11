@@ -52,6 +52,36 @@
 
     </navigation>
 
+    <navigation
+        android:id="@+id/navigation_profile"
+        app:startDestination="@id/navigation_profile_home">
+
+        <fragment
+            android:id="@+id/navigation_profile_home"
+            android:name="com.bluetriangle.bluetriangledemo.ui.profile.ProfileFragment"
+            android:label="@string/title_profile"
+            tools:layout="@layout/fragment_profile">
+            <action
+                android:id="@+id/action_profile_to_order_history"
+                app:destination="@id/navigation_order_history" />
+            <action
+                android:id="@+id/action_profile_to_favourites"
+                app:destination="@id/navigation_favourites" />
+        </fragment>
+
+        <fragment
+            android:id="@+id/navigation_order_history"
+            android:name="com.bluetriangle.bluetriangledemo.ui.profile.OrderHistoryFragment"
+            android:label="@string/title_order_history"
+            tools:layout="@layout/fragment_order_history" />
+
+        <fragment
+            android:id="@+id/navigation_favourites"
+            android:name="com.bluetriangle.bluetriangledemo.ui.profile.FavouritesFragment"
+            android:label="@string/title_favourites"
+            tools:layout="@layout/fragment_favourites" />
+    </navigation>
+
     <fragment
         android:id="@+id/navigation_settings"
         android:name="com.bluetriangle.bluetriangledemo.ui.settings.SettingsFragment"

@@ -22,7 +22,6 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Add
@@ -44,18 +43,16 @@ import androidx.core.content.IntentCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.bluetriangle.analytics.Tracker
 import com.bluetriangle.bluetriangledemo.DemoApplication
-import com.bluetriangle.bluetriangledemo.R
 import com.bluetriangle.bluetriangledemo.compose.components.ErrorAlertDialog
+import com.bluetriangle.bluetriangledemo.compose.components.InsetAwareTopAppBar
 import com.bluetriangle.bluetriangledemo.compose.components.MemoryWarningDialog
+import com.bluetriangle.bluetriangledemo.compose.components.NetworkImage
 import com.bluetriangle.bluetriangledemo.compose.theme.BlueTriangleComposeDemoTheme
 import com.bluetriangle.bluetriangledemo.compose.theme.outline
 import com.bluetriangle.bluetriangledemo.data.Product
 import com.bluetriangle.bluetriangledemo.tests.MemoryMonitor
 import com.bluetriangle.bluetriangledemo.ui.products.ProductDetailViewModel
-import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
-import com.bumptech.glide.integration.compose.GlideImage
 import com.bluetriangle.bluetriangledemo.utils.MemoryHolder
-import com.bumptech.glide.integration.compose.placeholder
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -85,7 +82,7 @@ class ProductDetailsActivity : ComponentActivity() {
                 }
             BlueTriangleComposeDemoTheme {
                 Scaffold(topBar = {
-                    TopAppBar(
+                    InsetAwareTopAppBar(
                         title = { Text("Product Details") },
                         navigationIcon = {
                             IconButton(onClick = { finish() }) {
@@ -105,7 +102,6 @@ class ProductDetailsActivity : ComponentActivity() {
         }
     }
 
-    @OptIn(ExperimentalGlideComposeApi::class)
     @Composable
     private fun ProductDetails(
         paddingValues: PaddingValues,
@@ -129,7 +125,7 @@ class ProductDetailsActivity : ComponentActivity() {
                 shape = RoundedCornerShape(8.dp),
                 content = {
                     Column(Modifier.padding(8.dp)) {
-                        GlideImage(
+                        NetworkImage(
                             model = product.image,
                             contentDescription = product.description,
                             modifier = Modifier
@@ -137,7 +133,7 @@ class ProductDetailsActivity : ComponentActivity() {
                                 .height(300.dp)
                                 .clip(RoundedCornerShape(8.dp)),
                             contentScale = ContentScale.Crop,
-                            failure = placeholder(R.drawable.ic_error)
+                            indicatorSize = 48.dp
                         )
                         Spacer(modifier = Modifier.width(20.dp))
                         Column(

@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.bluetriangle.analytics.Tracker
 import com.bluetriangle.bluetriangledemo.DemoApplication
+import com.bluetriangle.bluetriangledemo.R
 import com.bluetriangle.bluetriangledemo.databinding.FragmentProductDetailBinding
 import com.bluetriangle.bluetriangledemo.utils.AlertDialogState
 import com.bluetriangle.bluetriangledemo.utils.AlertView
@@ -44,7 +45,7 @@ class ProductDetailFragment : Fragment(), AlertView {
             productName.text = args.product.name
             productPrice.text = String.format(Locale.ENGLISH, "%.2f", args.product.price)
             productDescription.text = args.product.description
-            productImage.loadImage(args.product.image)
+            productImage.loadImage(args.product.image, R.drawable.ic_error, imageProgress)
             addToCartButton.setOnClickListener {
                 productDetailViewModel.addToCart(args.product)
             }

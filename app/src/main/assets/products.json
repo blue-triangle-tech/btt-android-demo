@@ -1,0 +1,212 @@
+[
+  {
+    "id": 25,
+    "name": "Nike Air Zoom Pegasus 41",
+    "description": "Lightweight running shoes with responsive Zoom Air cushioning, breathable mesh upper, and durable outsole for everyday training and racing.",
+    "image": "https://publicobject.com/helloworld.txt",
+    "price": "139.00"
+  },
+  {
+    "id": 8,
+    "name": "Microsoft Surface Laptop 4",
+    "description": "Style and speed. Stand out on HD video calls backed by Studio Mics. Capture ideas on the vibrant touchscreen.",
+    "image": "https://trackerdemo.github.io/hybrid-demo-info/images/microsoft_surface.jpg",
+    "price": "1499.00"
+  },
+  {
+    "id": 2,
+    "name": "iPhone X",
+    "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+    "image": "https://trackerdemo.github.io/hybrid-demo-info/images/iphone_x.png",
+    "price": "899.00"
+  },
+  {
+    "id": 29,
+    "name": "Philips Airfryer XXL",
+    "description": "Large-capacity air fryer with rapid hot air technology for healthier frying, roasting, baking, and grilling using little to no oil.",
+    "image": "https://httpbin.org/invalidendpoint",
+    "price": "249.00"
+  },
+  {
+    "id": 14,
+    "name": "Fog Scent Xpressio Perfume",
+    "description": "Product details of Best Fog Scent Xpressio Perfume 100ml For Men cool long lasting perfumes for Men",
+    "image": "https://trackerdemo.github.io/hybrid-demo-info/images/fog_scent_xpressio_perfume.jpg",
+    "price": "13.00"
+  },
+  {
+    "id": 27,
+    "name": "Dyson V15 Detect Cordless Vacuum",
+    "description": "Smart cordless vacuum with laser dust detection, powerful suction, and LCD screen showing real-time performance and battery life.",
+    "image": "https://untrusted-root.badssl.com/",
+    "price": "699.00"
+  },
+  {
+    "id": 28,
+    "name": "Plant Hanger For Home",
+    "description": "Boho Decor Plant Hanger For Home Wall Decoration Macrame Wall Hanging Shelf",
+    "image": "https://192.169.2.111/",
+    "price": "41.00"
+  },
+  {
+    "id": 22,
+    "name": "Apple Watch Series 9 (GPS, 45mm)",
+    "description": "Smartwatch with always-on Retina display, fitness tracking, blood oxygen and ECG apps, plus seamless iPhone integration and fast charging.",
+    "image": "https://trackerdemo.github.io/hybrid-demo-info/images/apple%20watch%20series%209%20(gps,%2045mm).jpg",
+    "price": "429.00"
+  },
+  {
+    "id": 23,
+    "name": "Sony WH-1000XM5",
+    "description": "Industry-leading wireless noise-canceling headphones with 30 hours of battery life, ultra-clear hands-free calls, and immersive high-resolution sound.",
+    "image": "https://trackerdemo.github.io/hybrid-demo-info/images/sony%20wh-1000xm5.jpg",
+    "price": "399.00"
+  },
+  {
+    "id": 24,
+    "name": "Apple MacBook Air (M3, 2024)",
+    "description": "Ultra-thin, ultra-light laptop with Apple’s M3 chip, 13\" Liquid Retina display, 18-hour battery life, and a fanless design for silent performance.",
+    "image": "https://trackerdemo.github.io/hybrid-demo-info/images/apple%20macbook%20air%20(m3,%202024).jpg",
+    "price": "1099.00"
+  },
+  {
+    "id": 26,
+    "name": "Adidas Ultraboost 23 (Women’s)",
+    "description": "High-performance running shoes with Boost midsole for maximum energy return, primeknit upper for adaptive fit, and stylish everyday design.",
+    "image": "https://dnsrequestwouldfailhere.com/",
+    "price": "189.00"
+  },
+  {
+    "id": 18,
+    "name": "Hyaluronic Acid Serum",
+    "description": "L'OrÃ©al Paris introduces Hyaluron Expert Replumping Serum formulated with 1.5% Hyaluronic Acid",
+    "image": "https://trackerdemo.github.io/hybrid-demo-info/images/hyaluronic_acid_serum.jpg",
+    "price": "19.00"
+  },
+  {
+    "id": 1,
+    "name": "iPhone 9",
+    "description": "An apple mobile which is nothing like apple",
+    "image": "https://trackerdemo.github.io/hybrid-demo-info/images/iphone_9.jpg",
+    "price": "549.00"
+  },
+  {
+    "id": 3,
+    "name": "Samsung Universe 9",
+    "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
+    "image": "https://trackerdemo.github.io/hybrid-demo-info/images/samsung_universe_9.jpg",
+    "price": "1249.00"
+  },
+  {
+    "id": 4,
+    "name": "OPPOF19",
+    "description": "OPPO F19 is officially announced on April 2021.",
+    "image": "https://trackerdemo.github.io/hybrid-demo-info/images/oppof19.jpeg",
+    "price": "280.00"
+  },
+  {
+    "id": 5,
+    "name": "Huawei P30",
+    "description": "Huawei’s re-badged P30 Pro New Edition was officially unveiled yesterday in Germany and now the device has made its way to the UK.",
+    "image": "https://trackerdemo.github.io/hybrid-demo-info/images/huawei_p30.jpg",
+    "price": "499.00"
+  },
+  {
+    "id": 6,
+    "name": "MacBook Pro",
+    "description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
+    "image": "https://trackerdemo.github.io/hybrid-demo-info/images/macbook_pro.jpg",
+    "price": "1749.00"
+  },
+  {
+    "id": 7,
+    "name": "Samsung Galaxy Book",
+    "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
+    "image": "https://trackerdemo.github.io/hybrid-demo-info/images/samsung_galaxy_book.jpeg",
+    "price": "1499.00"
+  },
+  {
+    "id": 9,
+    "name": "Infinix INBOOK",
+    "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
+    "image": "https://trackerdemo.github.io/hybrid-demo-info/images/infinix_inbook.jpg",
+    "price": "1099.00"
+  },
+  {
+    "id": 10,
+    "name": "HP Pavilion 15-DK1056WM",
+    "description": "HP Pavilion 15-DK1056WM Gaming Laptop 10th Gen Core i5, 8GB, 256GB SSD, GTX 1650 4GB, Windows 10",
+    "image": "https://trackerdemo.github.io/hybrid-demo-info/images/hp_pavillion.jpg",
+    "price": "1099.00"
+  },
+  {
+    "id": 11,
+    "name": "Perfume Oil",
+    "description": "Mega Discount, Impression of Acqua Di Gio by GiorgioArmani concentrated attar perfume Oil",
+    "image": "https://trackerdemo.github.io/hybrid-demo-info/images/perfume_oil.jpg",
+    "price": "13.00"
+  },
+  {
+    "id": 12,
+    "name": "Brown Perfume",
+    "description": "Royal_Mirage Sport Brown Perfume for Men & Women - 120ml",
+    "image": "https://trackerdemo.github.io/hybrid-demo-info/images/brown_perfume.jpg",
+    "price": "40.00"
+  },
+  {
+    "id": 15,
+    "name": "Non-Alcoholic Concentrated Perfume Oil",
+    "description": "Original Al Munakh® by Mahal Al Musk | Our Impression of Climate | 6ml Non-Alcoholic Concentrated Perfume Oil",
+    "image": "https://trackerdemo.github.io/hybrid-demo-info/images/non_alchoholic_concentrated_perfume_oil.jpg",
+    "price": "120.00"
+  },
+  {
+    "id": 17,
+    "name": "Eau De Perfume Spray",
+    "description": "Genuine  Al-Rehab spray perfume from UAE/Saudi Arabia/Yemen High Quality",
+    "image": "https://trackerdemo.github.io/hybrid-demo-info/images/eau_de_perfume_spray.jpg",
+    "price": "30.00"
+  },
+  {
+    "id": 19,
+    "name": "Tree Oil 30ml",
+    "description": "Tea tree oil contains a number of compounds, including terpinen-4-ol, that have been shown to kill certain bacteria",
+    "image": "https://trackerdemo.github.io/hybrid-demo-info/images/tree_oil.jpg",
+    "price": "12.00"
+  },
+  {
+    "id": 20,
+    "name": "Oil Free Moisturizer 100ml",
+    "description": "Dermive Oil Free Moisturizer with SPF 20 is specifically formulated with ceramides, hyaluronic acid & sunscreen.",
+    "image": "https://trackerdemo.github.io/hybrid-demo-info/images/oilfree_moisturizer.jpg",
+    "price": "40.00"
+  },
+  {
+    "id": 21,
+    "name": "Skin Beauty Serum",
+    "description": "Product name: rorec collagen hyaluronic acid white face serum riceNet weight: 15 m",
+    "image": "https://trackerdemo.github.io/hybrid-demo-info/images/skin_beauty_serum.jpg",
+    "price": "46.00"
+  },
+  {
+    "id": 31,
+    "name": "Handcraft Chinese style",
+    "description": "Handcraft Chinese style art luxury palace hotel villa mansion home decor ceramic vase with brass fruit plate",
+    "image": "https://trackerdemo.github.io/hybrid-demo-info/images/handcraft_chinese_style.jpg",
+    "price": "30.00"
+  },
+  {
+    "id": 32,
+    "name": "Key Holder",
+    "description": "Attractive DesignMetallic materialFour key hooksReliable & DurablePremium Quality",
+    "image": "https://trackerdemo.github.io/hybrid-demo-info/images/keyholder.jpeg",
+    "price": "30.00"
+  },
+  {
+    "id": 30,
+    "name": "Nespresso VertuoPlus Coffee Maker",
+    "description": "Automatic coffee and espresso machine with one-touch brewing, crema-rich coffee pods, and adjustable water tank for flexibility.",
+    "image": "https://reqres.in/api/unknown/1?delay=25",
+    "price": "199.00"
+  }
+]

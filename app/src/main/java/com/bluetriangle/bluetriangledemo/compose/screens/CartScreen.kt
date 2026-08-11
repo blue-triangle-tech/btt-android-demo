@@ -39,12 +39,10 @@ import com.bluetriangle.analytics.compose.BttTimerEffect
 import com.bluetriangle.bluetriangledemo.R
 import com.bluetriangle.bluetriangledemo.compose.ManualTimerEffect
 import com.bluetriangle.bluetriangledemo.compose.components.ErrorAlertDialog
+import com.bluetriangle.bluetriangledemo.compose.components.NetworkImage
 import com.bluetriangle.bluetriangledemo.compose.theme.outline
 import com.bluetriangle.bluetriangledemo.data.CartItem
 import com.bluetriangle.bluetriangledemo.ui.cart.CartViewModel
-import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
-import com.bumptech.glide.integration.compose.GlideImage
-import com.bumptech.glide.integration.compose.placeholder
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -93,7 +91,6 @@ fun CartScreen(navigateToCart: ()->Unit, viewModel: CartViewModel = hiltViewMode
     ErrorAlertDialog(errorHandler = viewModel.errorHandler)
 }
 
-@OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun CartListItem(viewModel: CartViewModel, cartItem: CartItem) {
     Card(
@@ -105,7 +102,7 @@ fun CartListItem(viewModel: CartViewModel, cartItem: CartItem) {
         backgroundColor = MaterialTheme.colors.background
     ) {
         Column(Modifier.padding(8.dp)) {
-            GlideImage(
+            NetworkImage(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(128.dp)
@@ -118,7 +115,7 @@ fun CartListItem(viewModel: CartViewModel, cartItem: CartItem) {
                 model = cartItem.productReference?.image,
                 contentDescription = cartItem.productReference?.description,
                 contentScale = ContentScale.Crop,
-                failure = placeholder(R.drawable.ic_error)
+                indicatorSize = 32.dp
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(text = cartItem.productReference?.name ?: "", maxLines = 1)

@@ -15,4 +15,11 @@
         <item name="colorOutline">#EEEEEE</item>
         <item name="colorOutlineVariant">#BBBBBB</item>
     </style>
+
+    <!-- For activities that supply their own Toolbar. The decor ActionBar overlaps the content
+         under the edge-to-edge enforcement applied from Android 15 onwards. -->
+    <style name="Theme.BlueTriangleDemo.NoActionBar" parent="Theme.BlueTriangleDemo">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 </resources>

@@ -40,6 +40,16 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:src="@color/black" />
 
+                <ProgressBar
+                    android:id="@+id/image_progress"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:indeterminate="true"
+                    app:layout_constraintBottom_toBottomOf="@id/product_image"
+                    app:layout_constraintEnd_toEndOf="@id/product_image"
+                    app:layout_constraintStart_toStartOf="@id/product_image"
+                    app:layout_constraintTop_toTopOf="@id/product_image" />
+
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/product_name"
                     android:layout_width="wrap_content"

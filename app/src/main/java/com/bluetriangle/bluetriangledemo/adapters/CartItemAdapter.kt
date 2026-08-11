@@ -3,9 +3,11 @@ package com.bluetriangle.bluetriangledemo.adapters
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bluetriangle.bluetriangledemo.R
 import com.bluetriangle.bluetriangledemo.data.CartItem
 import com.bluetriangle.bluetriangledemo.data.Product
 import com.bluetriangle.bluetriangledemo.databinding.ListItemCartItemBinding
@@ -54,9 +56,10 @@ class CartItemAdapter(
                 lineItemTotal.text = String.format("$%.2f", cartItem.total)
                 cartItem.productReference?.let { product ->
                     productName.text = product.name
-                    productImage.loadImage(product.image)
+                    productImage.loadImage(product.image, R.drawable.ic_error, imageProgress)
                 } ?: run {
                     Glide.with(productImage).clear(productImage)
+                    imageProgress.isVisible = false
                 }
                 quantityPlus.setOnClickListener {
                     cartPlusQuantityCallback(cartItem)
