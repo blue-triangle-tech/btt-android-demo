@@ -21,8 +21,8 @@ android {
         applicationId = "com.bluetriangle.bluetriangledemo"
         minSdk = 21
         targetSdk = 37
-        versionCode = 16
-        versionName = "2.12.0"
+        versionCode = 20
+        versionName = "2.12.4"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {

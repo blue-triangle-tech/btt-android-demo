@@ -44,7 +44,7 @@ import com.bluetriangle.bluetriangledemo.data.ProductAssetsRepository
 
 @Composable
 fun FavouritesScreen() {
-    ManualTimerEffect(screenName = "FavouritesScreenManualTimer")
+    //ManualTimerEffect(screenName = "FavouritesScreenManualTimer")
 
     val context = LocalContext.current
     val favourites = remember { ProductAssetsRepository.favourites(context) }

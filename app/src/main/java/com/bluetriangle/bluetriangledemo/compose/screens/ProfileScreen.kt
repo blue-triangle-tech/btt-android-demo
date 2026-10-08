@@ -49,7 +49,7 @@ fun ProfileScreen(
     onOrderHistoryClick: () -> Unit,
     onFavouritesClick: () -> Unit
 ) {
-    ManualTimerEffect(screenName = "ProfileScreenManualTimer")
+    //ManualTimerEffect(screenName = "ProfileScreenManualTimer")
 
     val context = LocalContext.current
     val favouritesCount = remember { ProductAssetsRepository.favourites(context).size }

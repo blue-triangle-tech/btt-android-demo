@@ -50,7 +50,7 @@ import kotlinx.coroutines.withContext
 @Composable
 fun CartScreen(navigateToCart: ()->Unit, viewModel: CartViewModel = hiltViewModel()) {
     //BttTimerEffect(screenName = "Cart_Screen")
-    ManualTimerEffect(screenName = "CartScreenManualTimer")
+    //ManualTimerEffect(screenName = "CartScreenManualTimer")
     val scope = rememberCoroutineScope()
     val cart = viewModel.cart.asFlow().collectAsState(null)
     val cartItems = cart.value?.items ?: listOf()

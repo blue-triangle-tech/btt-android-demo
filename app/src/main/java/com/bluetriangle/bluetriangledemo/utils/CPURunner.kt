@@ -31,9 +31,11 @@ object CPURunner {
     }
 
     fun fiftyPercentOfDeviceCapacity() {
-        val cpuCores = Os.sysconf(OsConstants._SC_NPROCESSORS_CONF)
+        val cpuCores = Os.sysconf(OsConstants._SC_NPROCESSORS_CONF).toInt()
 
-        repeat(cpuCores.toInt()/2) {
+        val workers = maxOf(1, cpuCores / 2)
+
+        repeat(workers) {
             hundredPercentCPU()
         }
     }

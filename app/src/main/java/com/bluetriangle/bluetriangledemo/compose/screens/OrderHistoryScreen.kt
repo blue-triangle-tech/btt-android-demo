@@ -39,7 +39,7 @@ import com.bluetriangle.bluetriangledemo.data.Order
 
 @Composable
 fun OrderHistoryScreen(orders: List<Order> = DummyProfileData.orders) {
-    ManualTimerEffect(screenName = "OrderHistoryScreenManualTimer")
+    //ManualTimerEffect(screenName = "OrderHistoryScreenManualTimer")
 
     LazyColumn(
         modifier = Modifier

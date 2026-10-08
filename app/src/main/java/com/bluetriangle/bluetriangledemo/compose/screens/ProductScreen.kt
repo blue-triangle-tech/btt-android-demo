@@ -61,7 +61,7 @@ import com.bumptech.glide.integration.compose.RequestState
 @Composable
 fun ProductsScreen(productsViewModel: ProductsViewModel = hiltViewModel()) {
     //BttTimerEffect(screenName = "Product Tab")
-    ManualTimerEffect(screenName = "ProductsTabManualTimer")
+    //ManualTimerEffect(screenName = "ProductsTabManualTimer")
     val products by productsViewModel.products.asFlow().collectAsState(listOf())
     val context = LocalContext.current
 
