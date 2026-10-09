@@ -17,3 +17,9 @@ const val PRODUCTS_GRID_SPAN_COUNT = 2
  * SDK's 2 second screen grouping window so both screens are reported as one group.
  */
 const val RECENT_ACTIVITY_FORWARD_DELAY_MS = 1000L
+
+/** How long the main thread is blocked per Order History scroll hitch. */
+const val ORDER_HISTORY_SCROLL_HITCH_MS = 150L
+
+/** Minimum gap between Order History scroll hitches, so scrolling stutters rather than freezes. */
+const val ORDER_HISTORY_SCROLL_HITCH_INTERVAL_MS = 300L

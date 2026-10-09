@@ -8,11 +8,13 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bluetriangle.bluetriangledemo.TrackedFragment
 import com.bluetriangle.bluetriangledemo.adapters.OrderAdapter
 import com.bluetriangle.bluetriangledemo.data.DummyProfileData
 import com.bluetriangle.bluetriangledemo.databinding.FragmentOrderHistoryBinding
 import com.bluetriangle.bluetriangledemo.utils.RECENT_ACTIVITY_FORWARD_DELAY_MS
+import com.bluetriangle.bluetriangledemo.utils.ScrollHitchSimulator
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -42,6 +44,12 @@ class OrderHistoryFragment : TrackedFragment() {
         binding.ordersList.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             adapter = orderAdapter
+            val scrollHitchSimulator = ScrollHitchSimulator()
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    scrollHitchSimulator.onScroll()
+                }
+            })
         }
         orderAdapter.submitList(DummyProfileData.orders)
 

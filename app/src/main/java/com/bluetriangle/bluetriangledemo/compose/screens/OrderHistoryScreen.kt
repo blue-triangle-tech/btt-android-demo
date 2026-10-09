@@ -22,11 +22,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
+import androidx.compose.ui.input.nestedscroll.NestedScrollSource
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
@@ -42,6 +47,7 @@ import com.bluetriangle.bluetriangledemo.compose.theme.outline
 import com.bluetriangle.bluetriangledemo.data.DummyProfileData
 import com.bluetriangle.bluetriangledemo.data.Order
 import com.bluetriangle.bluetriangledemo.utils.RECENT_ACTIVITY_FORWARD_DELAY_MS
+import com.bluetriangle.bluetriangledemo.utils.ScrollHitchSimulator
 import kotlinx.coroutines.delay
 
 /**
@@ -66,9 +72,21 @@ fun RecentActivityScreen(onForwardToFavourites: () -> Unit) {
 fun OrderHistoryScreen(orders: List<Order> = DummyProfileData.orders) {
     //ManualTimerEffect(screenName = "OrderHistoryScreenManualTimer")
 
+    // Blocks the main thread on scroll so the list visibly stutters (scroll hitches).
+    val scrollHitchConnection = remember {
+        val scrollHitchSimulator = ScrollHitchSimulator()
+        object : NestedScrollConnection {
+            override fun onPreScroll(available: Offset, source: NestedScrollSource): Offset {
+                scrollHitchSimulator.onScroll()
+                return Offset.Zero
+            }
+        }
+    }
+
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
+            .nestedScroll(scrollHitchConnection)
             .padding(8.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
