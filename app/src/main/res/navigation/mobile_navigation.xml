@@ -73,7 +73,15 @@
             android:id="@+id/navigation_order_history"
             android:name="com.bluetriangle.bluetriangledemo.ui.profile.OrderHistoryFragment"
             android:label="@string/title_order_history"
-            tools:layout="@layout/fragment_order_history" />
+            tools:layout="@layout/fragment_order_history">
+            <argument
+                android:name="forwardToFavourites"
+                android:defaultValue="false"
+                app:argType="boolean" />
+            <action
+                android:id="@+id/action_order_history_to_favourites"
+                app:destination="@id/navigation_favourites" />
+        </fragment>
 
         <fragment
             android:id="@+id/navigation_favourites"

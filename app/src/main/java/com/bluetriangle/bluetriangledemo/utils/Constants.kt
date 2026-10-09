@@ -11,3 +11,9 @@ val PRODUCTS_LAYOUT = ProductsLayout.GRID
 
 /** Columns used when [PRODUCTS_LAYOUT] is [ProductsLayout.GRID]. */
 const val PRODUCTS_GRID_SPAN_COUNT = 2
+
+/**
+ * Delay before "Recent Activity" auto-forwards from Order History to Favourites. Kept under the
+ * SDK's 2 second screen grouping window so both screens are reported as one group.
+ */
+const val RECENT_ACTIVITY_FORWARD_DELAY_MS = 1000L

@@ -197,7 +197,8 @@ fun getNavItemsList(navController: NavHostController): List<NavItem> {
                 NavItem.Destination("Profile", "profile/home") {
                     ProfileScreen(
                         onOrderHistoryClick = { navController.navigate("profile/orders") },
-                        onFavouritesClick = { navController.navigate("profile/favourites") }
+                        onFavouritesClick = { navController.navigate("profile/favourites") },
+                        onRecentActivityClick = { navController.navigate("profile/recent_activity") }
                     )
                 },
                 NavItem.Destination(
@@ -205,6 +206,15 @@ fun getNavItemsList(navController: NavHostController): List<NavItem> {
                     "profile/orders",
                     true
                 ) { OrderHistoryScreen() },
+                NavItem.Destination(
+                    "Order History",
+                    "profile/recent_activity",
+                    true
+                ) {
+                    RecentActivityScreen(
+                        onForwardToFavourites = { navController.navigate("profile/favourites") }
+                    )
+                },
                 NavItem.Destination(
                     "Favourites",
                     "profile/favourites",

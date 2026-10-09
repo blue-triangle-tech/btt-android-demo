@@ -5,6 +5,8 @@
     <string name="title_profile">Profile</string>
     <string name="title_order_history">Order History</string>
     <string name="title_favourites">Favourites</string>
+    <string name="title_recent_activity">Recent Activity</string>
+    <string name="profile_recent_activity_subtitle">Orders, then favourites</string>
     <string name="profile_phone">Phone</string>
     <string name="profile_member_since">Member since</string>
     <string name="profile_orders_placed">%1$d orders placed</string>

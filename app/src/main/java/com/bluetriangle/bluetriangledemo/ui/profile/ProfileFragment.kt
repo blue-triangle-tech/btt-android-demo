@@ -45,6 +45,13 @@ class ProfileFragment : TrackedFragment() {
             favouritesCard.setOnClickListener {
                 findNavController().navigate(ProfileFragmentDirections.actionProfileToFavourites())
             }
+            // Opens Order History, which then forwards to Favourites within the SDK's screen
+            // grouping window, so both launches are reported as a single group.
+            recentActivityCard.setOnClickListener {
+                findNavController().navigate(
+                    ProfileFragmentDirections.actionProfileToOrderHistory(forwardToFavourites = true)
+                )
+            }
         }
 
         return binding.root

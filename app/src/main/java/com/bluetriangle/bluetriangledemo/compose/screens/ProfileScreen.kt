@@ -25,6 +25,7 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.automirrored.filled.List
+import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -47,7 +48,8 @@ import com.bluetriangle.bluetriangledemo.data.UserProfile
 @Composable
 fun ProfileScreen(
     onOrderHistoryClick: () -> Unit,
-    onFavouritesClick: () -> Unit
+    onFavouritesClick: () -> Unit,
+    onRecentActivityClick: () -> Unit
 ) {
     //ManualTimerEffect(screenName = "ProfileScreenManualTimer")
 
@@ -57,6 +59,7 @@ fun ProfileScreen(
     ProfileScreenContent(
         onOrderHistoryClick = onOrderHistoryClick,
         onFavouritesClick = onFavouritesClick,
+        onRecentActivityClick = onRecentActivityClick,
         favouritesCount = favouritesCount
     )
 }
@@ -65,6 +68,7 @@ fun ProfileScreen(
 fun ProfileScreenContent(
     onOrderHistoryClick: () -> Unit,
     onFavouritesClick: () -> Unit,
+    onRecentActivityClick: () -> Unit,
     favouritesCount: Int,
     profile: UserProfile = DummyProfileData.profile
 ) {
@@ -89,6 +93,12 @@ fun ProfileScreenContent(
             title = "Favourites",
             subtitle = "$favouritesCount saved items",
             onClick = onFavouritesClick
+        )
+        ProfileMenuItem(
+            icon = Icons.Filled.DateRange,
+            title = "Recent Activity",
+            subtitle = "Orders, then favourites",
+            onClick = onRecentActivityClick
         )
     }
 }
@@ -228,6 +238,7 @@ fun ProfileScreenPreview() {
         ProfileScreenContent(
             onOrderHistoryClick = {},
             onFavouritesClick = {},
+            onRecentActivityClick = {},
             favouritesCount = DummyProfileData.sampleFavourites.size
         )
     }

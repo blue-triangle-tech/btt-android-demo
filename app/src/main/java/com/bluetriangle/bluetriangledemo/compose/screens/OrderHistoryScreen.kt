@@ -19,6 +19,11 @@ import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -36,6 +41,26 @@ import com.bluetriangle.bluetriangledemo.compose.theme.BlueTriangleComposeDemoTh
 import com.bluetriangle.bluetriangledemo.compose.theme.outline
 import com.bluetriangle.bluetriangledemo.data.DummyProfileData
 import com.bluetriangle.bluetriangledemo.data.Order
+import com.bluetriangle.bluetriangledemo.utils.RECENT_ACTIVITY_FORWARD_DELAY_MS
+import kotlinx.coroutines.delay
+
+/**
+ * Order History that forwards to Favourites after [RECENT_ACTIVITY_FORWARD_DELAY_MS], keeping both
+ * screen launches inside the SDK's 2 second screen grouping window.
+ */
+@Composable
+fun RecentActivityScreen(onForwardToFavourites: () -> Unit) {
+    // Saved with the back stack entry, so returning here via Back doesn't forward again.
+    var hasForwarded by rememberSaveable { mutableStateOf(false) }
+    LaunchedEffect(Unit) {
+        if (!hasForwarded) {
+            delay(RECENT_ACTIVITY_FORWARD_DELAY_MS)
+            hasForwarded = true
+            onForwardToFavourites()
+        }
+    }
+    OrderHistoryScreen()
+}
 
 @Composable
 fun OrderHistoryScreen(orders: List<Order> = DummyProfileData.orders) {
