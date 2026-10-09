@@ -5,10 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bluetriangle.bluetriangledemo.TrackedFragment
 import com.bluetriangle.bluetriangledemo.adapters.FavouriteAdapter
 import com.bluetriangle.bluetriangledemo.data.ProductAssetsRepository
 import com.bluetriangle.bluetriangledemo.databinding.FragmentFavouritesBinding
+import com.bluetriangle.bluetriangledemo.utils.FAVOURITES_SCROLL_HANG_INTERVAL_MS
+import com.bluetriangle.bluetriangledemo.utils.FAVOURITES_SCROLL_HANG_MS
+import com.bluetriangle.bluetriangledemo.utils.ScrollHitchSimulator
 
 private const val FAVOURITES_COLUMN_COUNT = 2
 
@@ -28,6 +32,16 @@ class FavouritesFragment : TrackedFragment() {
         binding.favouritesList.apply {
             layoutManager = GridLayoutManager(context, FAVOURITES_COLUMN_COUNT)
             adapter = favouriteAdapter
+            // Blocks the main thread on scroll long enough for the SDK to report a hang.
+            val scrollHangSimulator = ScrollHitchSimulator(
+                hitchMs = FAVOURITES_SCROLL_HANG_MS,
+                intervalMs = FAVOURITES_SCROLL_HANG_INTERVAL_MS
+            )
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    scrollHangSimulator.onScroll()
+                }
+            })
         }
         favouriteAdapter.submitList(ProductAssetsRepository.favourites(requireContext()))
 

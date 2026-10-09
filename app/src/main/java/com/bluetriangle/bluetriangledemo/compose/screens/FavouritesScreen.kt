@@ -25,6 +25,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
+import androidx.compose.ui.input.nestedscroll.NestedScrollSource
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -41,6 +45,9 @@ import com.bluetriangle.bluetriangledemo.compose.theme.outline
 import com.bluetriangle.bluetriangledemo.data.DummyProfileData
 import com.bluetriangle.bluetriangledemo.data.FavouriteItem
 import com.bluetriangle.bluetriangledemo.data.ProductAssetsRepository
+import com.bluetriangle.bluetriangledemo.utils.FAVOURITES_SCROLL_HANG_INTERVAL_MS
+import com.bluetriangle.bluetriangledemo.utils.FAVOURITES_SCROLL_HANG_MS
+import com.bluetriangle.bluetriangledemo.utils.ScrollHitchSimulator
 
 @Composable
 fun FavouritesScreen() {
@@ -54,10 +61,25 @@ fun FavouritesScreen() {
 
 @Composable
 fun FavouritesScreenContent(favourites: List<FavouriteItem>) {
+    // Blocks the main thread on scroll long enough for the SDK to report a hang.
+    val scrollHangConnection = remember {
+        val scrollHangSimulator = ScrollHitchSimulator(
+            hitchMs = FAVOURITES_SCROLL_HANG_MS,
+            intervalMs = FAVOURITES_SCROLL_HANG_INTERVAL_MS
+        )
+        object : NestedScrollConnection {
+            override fun onPreScroll(available: Offset, source: NestedScrollSource): Offset {
+                scrollHangSimulator.onScroll()
+                return Offset.Zero
+            }
+        }
+    }
+
     LazyVerticalGrid(
         columns = GridCells.Adaptive(minSize = 150.dp),
         modifier = Modifier
             .fillMaxSize()
+            .nestedScroll(scrollHangConnection)
             .padding(8.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)

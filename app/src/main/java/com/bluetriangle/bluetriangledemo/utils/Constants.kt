@@ -23,3 +23,12 @@ const val ORDER_HISTORY_SCROLL_HITCH_MS = 150L
 
 /** Minimum gap between Order History scroll hitches, so scrolling stutters rather than freezes. */
 const val ORDER_HISTORY_SCROLL_HITCH_INTERVAL_MS = 300L
+
+/**
+ * How long the main thread is blocked per Favourites scroll hang. Above the SDK's 750 ms hang
+ * threshold so it is reported as a hang.
+ */
+const val FAVOURITES_SCROLL_HANG_MS = 1500L
+
+/** Minimum gap between Favourites scroll hangs, so the list can still be scrolled in between. */
+const val FAVOURITES_SCROLL_HANG_INTERVAL_MS = 1000L
