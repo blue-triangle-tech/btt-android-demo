@@ -1,5 +1,8 @@
 package com.bluetriangle.bluetriangledemo.compose.screens
 
+import android.content.Intent
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -31,6 +34,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -43,6 +47,7 @@ import com.bluetriangle.bluetriangledemo.compose.components.NetworkImage
 import com.bluetriangle.bluetriangledemo.compose.theme.outline
 import com.bluetriangle.bluetriangledemo.data.CartItem
 import com.bluetriangle.bluetriangledemo.ui.cart.CartViewModel
+import com.bluetriangle.bluetriangledemo.utils.DEFAULT_SITE_ID
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -54,6 +59,10 @@ fun CartScreen(navigateToCart: ()->Unit, viewModel: CartViewModel = hiltViewMode
     val scope = rememberCoroutineScope()
     val cart = viewModel.cart.asFlow().collectAsState(null)
     val cartItems = cart.value?.items ?: listOf()
+    val context = LocalContext.current
+    val webCheckoutLauncher = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+        viewModel.refreshCart()
+    }
 
     Column(
         Modifier
@@ -86,6 +95,19 @@ fun CartScreen(navigateToCart: ()->Unit, viewModel: CartViewModel = hiltViewMode
             }
         }) {
             Text(text = "Checkout")
+        }
+
+        if (!viewModel.isCartEmpty) {
+            Button(modifier = Modifier.fillMaxWidth(), onClick = {
+                cart.value?.let {
+                    webCheckoutLauncher.launch(
+                        Intent(context, WebCheckOutComposeActivity::class.java)
+                            .putExtra(WebCheckOutComposeActivity.CART_ID, it.id)
+                    )
+                }
+            }) {
+                Text(text = "Web Checkout")
+            }
         }
     }
     ErrorAlertDialog(errorHandler = viewModel.errorHandler)

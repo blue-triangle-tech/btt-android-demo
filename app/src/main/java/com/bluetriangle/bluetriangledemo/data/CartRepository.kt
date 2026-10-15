@@ -45,6 +45,10 @@ class CartRepository @Inject constructor(
 
     suspend fun checkout(cart: Cart) {
         storeService.checkout(cart.id)
+        clearCartId()
+    }
+
+    fun clearCartId() {
         sharedPreferences.edit(commit = true) {
             remove(KEY_CART_ID)
         }

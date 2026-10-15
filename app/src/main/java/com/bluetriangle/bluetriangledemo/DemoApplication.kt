@@ -53,11 +53,12 @@ class DemoApplication : Application() {
             initTracker()
         }
 
-        demoWebsiteUrl = "file://${filesDir.absolutePath}/index.html"
+        demoWebsiteUrl ="https://ganesh-aloha.github.io/sdk_demo_page/index.html?siteId=${DEFAULT_SITE_ID}&redirectToHome=true"
+//        demoWebsiteUrl = "file://${filesDir.absolutePath}/index.html"
 
-        if(!hasTagUrl()) {
-            setTagUrl(DEFAULT_TAG_URL)
-        }
+//        if(!hasTagUrl()) {
+//            setTagUrl(DEFAULT_TAG_URL)
+//        }
         checkAndAddDelay()
 
         Thread(memoryMonitor).start()

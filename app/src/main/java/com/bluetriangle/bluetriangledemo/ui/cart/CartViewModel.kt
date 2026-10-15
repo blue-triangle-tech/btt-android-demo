@@ -48,6 +48,11 @@ class CartViewModel @Inject constructor(val cartRepository: CartRepository) : Vi
         }
     }
 
+    val isCartEmpty: Boolean
+        get() {
+            return cart.value?.items.isNullOrEmpty()
+        }
+
     fun removeCartItem(cartItem: CartItem, startTime: Long = System.currentTimeMillis()) {
         val diff = System.currentTimeMillis() - startTime
         if(diff <= 10_000) {

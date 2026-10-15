@@ -1,10 +1,12 @@
 package com.bluetriangle.bluetriangledemo.ui.cart
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -19,6 +21,7 @@ import com.bluetriangle.bluetriangledemo.adapters.ProductAdapter
 import com.bluetriangle.bluetriangledemo.data.CartItem
 import com.bluetriangle.bluetriangledemo.data.Product
 import com.bluetriangle.bluetriangledemo.databinding.FragmentCartBinding
+import com.bluetriangle.bluetriangledemo.layout.WebCheckOutActivity
 import com.bluetriangle.bluetriangledemo.ui.products.ProductsFragmentDirections
 import com.bluetriangle.bluetriangledemo.utils.AlertDialogState
 import com.bluetriangle.bluetriangledemo.utils.AlertView
@@ -60,11 +63,20 @@ class CartFragment : TrackedFragment(), AlertView {
 
         cartViewModel.cart.observe(viewLifecycleOwner) { cart ->
             cartItemAdapter.submitList(cart?.items?: emptyList())
+            binding.webCheckoutButton.isVisible = !cart?.items.isNullOrEmpty()
         }
 
         binding.checkoutButton.setOnClickListener {
             cartViewModel.handleCheckoutCrash()
             findNavController().navigate(R.id.action_cart_to_checkout)
+        }
+
+        binding.webCheckoutButton.setOnClickListener {
+            val cart = cartViewModel.cart.value ?: return@setOnClickListener
+            startActivity(
+                Intent(requireContext(), WebCheckOutActivity::class.java)
+                    .putExtra(WebCheckOutActivity.CART_ID, cart.id)
+            )
         }
 
         return root

@@ -86,7 +86,7 @@ class ComposeAboutActivity : ComponentActivity() {
 }
 
 @Composable
-fun HybridWebView(url: String, setTitle: (String?) -> Unit, onUrlChange: (String?) -> Unit) {
+private fun HybridWebView(url: String, setTitle: (String?) -> Unit, onUrlChange: (String?) -> Unit) {
 
     var backEnabled by rememberSaveable {
         mutableStateOf(false)

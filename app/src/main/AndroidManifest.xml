@@ -32,6 +32,13 @@
             android:name=".compose.screens.ComposeAboutActivity"
             android:exported="false" />
         <activity
+            android:name=".compose.screens.WebCheckOutComposeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".layout.WebCheckOutActivity"
+            android:exported="false"
+            android:theme="@style/Theme.BlueTriangleDemo.NoActionBar" />
+        <activity
             android:name=".layout.LauncherActivity"
             android:exported="true" >
             <intent-filter>

@@ -4,6 +4,8 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.graphics.drawable.Drawable
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.util.TypedValue
 import android.view.View
@@ -104,4 +106,9 @@ fun Context.copyToClipboard(label:String, value: String) {
     val clipBoardManager = (getSystemService(Context.CLIPBOARD_SERVICE) as? ClipboardManager)?:return
     clipBoardManager.setPrimaryClip(ClipData.newPlainText(label, value))
     Toast.makeText(this, "Copied: $value", Toast.LENGTH_SHORT).show()
+}
+
+
+fun postDelayedUI(delayMillis: Long, runnable: () -> Unit) {
+    Handler(Looper.getMainLooper()).postDelayed(runnable, delayMillis)
 }

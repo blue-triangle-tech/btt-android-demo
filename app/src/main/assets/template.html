@@ -62,8 +62,16 @@
         xhr.send();
       }
 
+      function getRandomIntInclusive(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
 
       var page_name = "Hybrid Demo";
+      var order_number = 98764;//crypto.randomUUID(); //  Order Number Collection Variable
+      var cart_total = 505; // Thank You Page Collection Variable
+      var cart_items_count = 7; // Cart Count Variable
     </script>
     <!-- DO NOT TOUCH THE LINE BELOW (SCRIPT_TAG...). IT's USED PROGRAMMATICALLY -->
     <!--- SCRIPT_TAG_GOES_HERE --->
