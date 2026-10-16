@@ -1,9 +1,7 @@
 package com.bluetriangle.bluetriangledemo.compose.screens
 
 import android.os.Bundle
-import android.webkit.WebView
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,7 +13,6 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -24,10 +21,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.viewinterop.AndroidView
+import com.bluetriangle.bluetriangledemo.compose.components.HybridWebView
 import com.bluetriangle.bluetriangledemo.compose.components.InsetAwareTopAppBar
-import com.bluetriangle.bluetriangledemo.utils.BTTWebViewClient
-import com.bluetriangle.bluetriangledemo.utils.TitleChromeClient
 import com.bluetriangle.bluetriangledemo.compose.theme.BlueTriangleComposeDemoTheme
 import com.bluetriangle.bluetriangledemo.data.CartRepository
 import com.bluetriangle.bluetriangledemo.utils.DEFAULT_SITE_ID
@@ -52,11 +47,18 @@ class WebCheckOutComposeActivity : ComponentActivity() {
                 mutableLongStateOf(intent.getLongExtra(CART_ID, 0))
             }
 
-            var url = "https://ganesh-aloha.github.io/sdk_demo_page/cart.html?siteId=${DEFAULT_SITE_ID}&cartId=${cartNo}&redirectToHome=false"
+            var url =
+                "https://ganesh-aloha.github.io/sdk_demo_page/cart.html?siteId=${DEFAULT_SITE_ID}&cartId=${cartNo}&redirectToHome=false"
 
             BlueTriangleComposeDemoTheme {
                 Scaffold(topBar = {
-                    InsetAwareTopAppBar(title = { Text(text = title, maxLines = 1, overflow = TextOverflow.Ellipsis) }, navigationIcon = {
+                    InsetAwareTopAppBar(title = {
+                        Text(
+                            text = title,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis
+                        )
+                    }, navigationIcon = {
                         IconButton(onClick = {
                             onBackPressedDispatcher.onBackPressed()
                         }, modifier = Modifier.padding(8.dp)) {
@@ -91,36 +93,7 @@ class WebCheckOutComposeActivity : ComponentActivity() {
 
     companion object {
         const val CART_ID = "cart_id"
-        const val FALL_BACK_URL = "https://ganesh-aloha.github.io/sdk_demo_page/index.html?siteId=${DEFAULT_SITE_ID}&redirectToHome=true"
-
-    }
-}
-
-@Composable
-private fun HybridWebView(url: String, setTitle: (String?) -> Unit, onUrlChange: (String?) -> Unit) {
-
-    var backEnabled by rememberSaveable {
-        mutableStateOf(false)
-    }
-    var webView: WebView? = null
-    AndroidView(factory = { context ->
-        WebView(context).apply {
-            webView = this
-            webViewClient = BTTWebViewClient {
-                onUrlChange(it)
-                backEnabled = canGoBack()
-            }
-            webChromeClient = TitleChromeClient(setTitle)
-            settings.javaScriptEnabled = true
-            settings.domStorageEnabled = true
-            settings.allowFileAccess = true
-            WebView.setWebContentsDebuggingEnabled(true)
-        }
-    }, update = {
-        webView = it
-        it.loadUrl(url)
-    })
-    BackHandler(backEnabled) {
-        webView?.goBack()
+        const val FALL_BACK_URL =
+            "https://ganesh-aloha.github.io/sdk_demo_page/index.html?siteId=${DEFAULT_SITE_ID}&redirectToHome=true"
     }
 }

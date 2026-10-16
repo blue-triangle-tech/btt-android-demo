@@ -52,4 +52,7 @@
     <string name="configure_on_launch">Configure on Launch</string>
     <string name="add_delay">Add Delay</string>
     <string name="launch_configuration">Launch Configuration</string>
+    <string name="trigger_anr">Trigger ANR Warnings</string>
+    <string name="fatal_anr">Fatal ANR</string>
+    <string name="trigger_oom">Trigger OOM Warnings</string>
 </resources>

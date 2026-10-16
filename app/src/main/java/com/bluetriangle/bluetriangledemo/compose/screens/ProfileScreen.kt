@@ -17,6 +17,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Button
 import androidx.compose.material.Card
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
@@ -33,17 +34,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.bluetriangle.bluetriangledemo.compose.ManualTimerEffect
+import com.bluetriangle.bluetriangledemo.R
 import com.bluetriangle.bluetriangledemo.compose.theme.BlueTriangleComposeDemoTheme
 import com.bluetriangle.bluetriangledemo.compose.theme.outline
 import com.bluetriangle.bluetriangledemo.data.DummyProfileData
 import com.bluetriangle.bluetriangledemo.data.ProductAssetsRepository
 import com.bluetriangle.bluetriangledemo.data.UserProfile
+import com.bluetriangle.bluetriangledemo.utils.triggerANRWarning
+import com.bluetriangle.bluetriangledemo.utils.triggerFatalANR
 
 @Composable
 fun ProfileScreen(
@@ -100,6 +104,14 @@ fun ProfileScreenContent(
             subtitle = "Orders, then favourites",
             onClick = onRecentActivityClick
         )
+
+//        Button(onClick = { triggerANRWarning() }) {
+//            Text(text = stringResource(R.string.trigger_anr))
+//        }
+//
+//        Button(onClick = { triggerFatalANR() }) {
+//            Text(text = stringResource(R.string.fatal_anr))
+//        }
     }
 }
 

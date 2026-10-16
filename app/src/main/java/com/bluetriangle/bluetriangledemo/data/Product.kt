@@ -21,10 +21,19 @@ data class Product(
         get() = name == "Infinix INBOOK"
 
     @IgnoredOnParcel
-    val isOppo: Boolean
+    val isOppoPhone: Boolean
         get() = name == "OPPOF19"
 
     @IgnoredOnParcel
     val isPerfume: Boolean
         get() = name.contains("Perfume", true)
+
+    @IgnoredOnParcel
+    val isApplePhone: Boolean
+        get() = name.contains("iPhone", true)
+
+    @IgnoredOnParcel
+    val isMacbookPro: Boolean
+        get() = name == "MacBook Pro"
+
 }

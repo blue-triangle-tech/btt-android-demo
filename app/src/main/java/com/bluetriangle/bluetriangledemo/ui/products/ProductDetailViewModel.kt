@@ -10,6 +10,9 @@ import com.bluetriangle.bluetriangledemo.data.Product
 import com.bluetriangle.bluetriangledemo.utils.CPURunner
 import com.bluetriangle.bluetriangledemo.utils.ErrorHandler
 import com.bluetriangle.bluetriangledemo.utils.MemoryHolder
+import com.bluetriangle.bluetriangledemo.utils.triggerANRWarning
+import com.bluetriangle.bluetriangledemo.utils.triggerFatalANR
+import com.bluetriangle.bluetriangledemo.utils.triggerMemoryWarning
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.Main
@@ -50,13 +53,19 @@ class ProductDetailViewModel @Inject constructor(val cartRepository: CartReposit
     }
 
     fun handleProductDetailsTestCases(product: Product, addToCartClickCount: Int) {
-        if(product.isPerfume) {
+        if (product.isApplePhone) {
+            triggerANRWarning(false)
+        } else if (product.isMacbookPro) {
+            triggerMemoryWarning()
+        } else if (product.isOppoPhone) {
+            triggerFatalANR()
+        } else if (product.isPerfume) {
             MemoryHolder.allocateMemory()
-        } else if(product.isKeyHolder) {
+        } else if (product.isKeyHolder) {
             CPURunner.fiftyToEightPercentCPU()
-        } else if(product.isInfinixInBook) {
+        } else if (product.isInfinixInBook) {
             CPURunner.fiftyPercentOfDeviceCapacity()
-        } else if(addToCartClickCount > ADD_TO_CART_LIMIT) {
+        } else if (addToCartClickCount > ADD_TO_CART_LIMIT) {
             throw AddToCartLimitExceededException(ADD_TO_CART_LIMIT)
         }
     }

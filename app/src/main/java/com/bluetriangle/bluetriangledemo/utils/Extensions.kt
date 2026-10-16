@@ -107,8 +107,3 @@ fun Context.copyToClipboard(label:String, value: String) {
     clipBoardManager.setPrimaryClip(ClipData.newPlainText(label, value))
     Toast.makeText(this, "Copied: $value", Toast.LENGTH_SHORT).show()
 }
-
-
-fun postDelayedUI(delayMillis: Long, runnable: () -> Unit) {
-    Handler(Looper.getMainLooper()).postDelayed(runnable, delayMillis)
-}

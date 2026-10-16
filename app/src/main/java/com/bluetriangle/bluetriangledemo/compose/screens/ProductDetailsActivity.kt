@@ -161,7 +161,7 @@ class ProductDetailsActivity : ComponentActivity() {
                             Button(
                                 enabled = !addingToCart.value,
                                 onClick = {
-                                    addToCartCount.intValue = addToCartCount.intValue + 1
+                                    addToCartCount.intValue += 1
                                     viewModel.handleProductDetailsTestCases(product, addToCartCount.intValue)
                                     scope.launch {
                                         try {

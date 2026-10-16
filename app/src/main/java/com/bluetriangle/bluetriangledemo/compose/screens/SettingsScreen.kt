@@ -46,7 +46,9 @@ import com.bluetriangle.analytics.compose.BttTimerEffect
 import com.bluetriangle.bluetriangledemo.DemoApplication
 import com.bluetriangle.bluetriangledemo.R
 import com.bluetriangle.bluetriangledemo.ui.settings.SettingsViewModel
+import com.bluetriangle.bluetriangledemo.utils.MemoryHolder
 import com.bluetriangle.bluetriangledemo.utils.copyToClipboard
+import com.bluetriangle.bluetriangledemo.utils.triggerMemoryWarning
 
 class SettingsInfo(val label: String, val value: String, val copyAvailable: Boolean = false)
 
@@ -106,6 +108,10 @@ fun SettingsScreen(viewModel: SettingsViewModel = viewModel()) {
         }) {
             Text(text = stringResource(R.string.configuration_settings))
         }
+
+//        Button(onClick = { triggerMemoryWarning() }) {
+//            Text(text = stringResource(R.string.trigger_oom))
+//        }
 
         if (websiteUrlDialogOpen) {
             WebsiteDialog {

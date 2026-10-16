@@ -7,18 +7,18 @@ object MemoryHolder {
 
     private var memoryBank:LinkedList<MemoryBlock>? = null
 
-    class MemoryBlock {
-        private val memory = ByteArray(30 * 1024 * 1024)
+    class MemoryBlock(size:Int = 30 * 1024 * 1024) {
+        private val memory = ByteArray(size)
         init {
             Log.d("MemoryBlock","Allocated Memory Block of Size: ${memory.size} * 4 bytes")
         }
     }
 
-    fun allocateMemory() {
+    fun allocateMemory(size:Int= 30 * 1024 * 1024) {
         if(memoryBank == null) {
             memoryBank = LinkedList()
         }
-        memoryBank?.add(MemoryBlock())
+        memoryBank?.add(MemoryBlock(size))
     }
 
     fun deallocateMemory() {
