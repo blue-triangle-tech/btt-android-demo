@@ -34,7 +34,12 @@ fun HybridWebView(url: String, setTitle: (String?) -> Unit, onUrlChange: (String
         }
     }, update = {
         webView = it
-        it.loadUrl(url)
+        // update runs on every recomposition (e.g. a title change), so only load when the
+        // requested url changes; otherwise in-page navigation gets reset back to url.
+        if (it.tag != url) {
+            it.tag = url
+            it.loadUrl(url)
+        }
     })
 
     BackHandler(backEnabled) {

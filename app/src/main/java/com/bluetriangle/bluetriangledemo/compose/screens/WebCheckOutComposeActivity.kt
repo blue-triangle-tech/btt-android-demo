@@ -47,7 +47,7 @@ class WebCheckOutComposeActivity : ComponentActivity() {
                 mutableLongStateOf(intent.getLongExtra(CART_ID, 0))
             }
 
-            var url =
+            val url =
                 "https://ganesh-aloha.github.io/sdk_demo_page/cart.html?siteId=${DEFAULT_SITE_ID}&cartId=${cartNo}&redirectToHome=false"
 
             BlueTriangleComposeDemoTheme {
@@ -75,12 +75,10 @@ class WebCheckOutComposeActivity : ComponentActivity() {
                             .padding(it)
                             .fillMaxSize()
                     ) {
-                        HybridWebView(url, { title = it ?: FALL_BACK_URL }) {
-                            url = it ?: FALL_BACK_URL
-
-                            if (url.contains("confirmation.html")) {
+                        HybridWebView(url, { title = it ?: FALL_BACK_URL }) { currentUrl ->
+                            if (currentUrl?.contains("confirmation.html") == true) {
                                 cartRepository.clearCartId()
-                                postDelayedUI(8000) {
+                                postDelayedUI(6000) {
                                     if (!isFinishing) finish()
                                 }
                             }
