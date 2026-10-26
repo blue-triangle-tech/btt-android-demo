@@ -12,6 +12,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import retrofit2.HttpException
 import javax.inject.Inject
 
 @HiltViewModel
@@ -34,7 +35,11 @@ class CartViewModel @Inject constructor(val cartRepository: CartRepository) : Vi
                     _cart.value = cart
                 }
             } catch (e: Exception) {
-                errorHandler.showError(e)
+                if (e is HttpException && e.code() == 404) {
+                    cartRepository.clearCartId()
+                } else {
+                    errorHandler.showError(e)
+                }
             }
         }
     }
