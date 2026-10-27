@@ -21,8 +21,8 @@ android {
         applicationId = "com.bluetriangle.bluetriangledemo"
         minSdk = 21
         targetSdk = 37
-        versionCode = 20
-        versionName = "2.12.4"
+        versionCode = 22
+        versionName = "2.12.6"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -71,7 +71,7 @@ android {
 }
 
 dependencies {
-    implementation(libs.btt.android.sdk) {
+    implementation(libs.fork.btt.android.sdk) {
         exclude("com.squareup.okhttp3", "okhttp-bom")
     }
     implementation(libs.core.ktx)
