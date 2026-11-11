@@ -7,8 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.bluetriangle.bluetriangledemo.tests.HeavyLoopTest
+import androidx.navigation.fragment.navArgs
 import com.bluetriangle.bluetriangledemo.databinding.FragmentCheckoutBinding
+import com.bluetriangle.bluetriangledemo.tests.HeavyLoopTest
 import com.bluetriangle.bluetriangledemo.utils.AlertDialogState
 import com.bluetriangle.bluetriangledemo.utils.AlertView
 import com.bluetriangle.bluetriangledemo.utils.showAlert
@@ -22,6 +23,8 @@ class CheckoutFragment : Fragment(), AlertView {
 
     private val binding get() = _binding!!
 
+    private val args: CheckoutFragmentArgs by navArgs()
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val checkoutViewModel = ViewModelProvider(this)[CheckoutViewModel::class.java]
         checkoutViewModel.errorHandler.alertView = this
@@ -31,7 +34,8 @@ class CheckoutFragment : Fragment(), AlertView {
 
         checkoutViewModel.cart.observe(viewLifecycleOwner) {
             it?.let { cart ->
-                binding.orderNumber.text = String.format("Checkout ID: %s", cart.confirmation)
+                binding.orderNumber.text =
+                    String.format("Checkout ID: %s", args.checkoutId ?: cart.confirmation)
             }
         }
 

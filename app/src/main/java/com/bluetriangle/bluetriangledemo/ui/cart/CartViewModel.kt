@@ -8,11 +8,13 @@ import com.bluetriangle.bluetriangledemo.data.Cart
 import com.bluetriangle.bluetriangledemo.data.CartItem
 import com.bluetriangle.bluetriangledemo.data.CartRepository
 import com.bluetriangle.bluetriangledemo.utils.ErrorHandler
+import com.bluetriangle.bluetriangledemo.utils.PurchaseConfirmationTimer
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
+import java.util.UUID
 import javax.inject.Inject
 
 @HiltViewModel
@@ -51,6 +53,20 @@ class CartViewModel @Inject constructor(val cartRepository: CartRepository) : Vi
         } else if(cartValue.items.size >= 5) {
             throw CartOverflowException(cartValue.items.size)
         }
+    }
+
+    fun submitPurchaseConfirmation(): String? {
+        val cartValue = cart.value
+        if (cartValue == null || cartValue.items.isNullOrEmpty())
+            return null
+
+        val checkoutId = UUID.randomUUID().toString()
+        try {
+            PurchaseConfirmationTimer.submit(cartValue, checkoutId)
+        } catch (e: Exception) {
+        }
+
+        return checkoutId
     }
 
     val isCartEmpty: Boolean

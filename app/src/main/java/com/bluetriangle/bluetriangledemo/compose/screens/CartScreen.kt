@@ -39,21 +39,22 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.asFlow
-import com.bluetriangle.analytics.compose.BttTimerEffect
 import com.bluetriangle.bluetriangledemo.R
-import com.bluetriangle.bluetriangledemo.compose.ManualTimerEffect
 import com.bluetriangle.bluetriangledemo.compose.components.ErrorAlertDialog
 import com.bluetriangle.bluetriangledemo.compose.components.NetworkImage
 import com.bluetriangle.bluetriangledemo.compose.theme.outline
 import com.bluetriangle.bluetriangledemo.data.CartItem
 import com.bluetriangle.bluetriangledemo.ui.cart.CartViewModel
-import com.bluetriangle.bluetriangledemo.utils.DEFAULT_SITE_ID
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.UUID
 
 @Composable
-fun CartScreen(navigateToCart: ()->Unit, viewModel: CartViewModel = hiltViewModel()) {
+fun CartScreen(
+    navigateToCart: (checkoutId: String) -> Unit,
+    viewModel: CartViewModel = hiltViewModel()
+) {
     //BttTimerEffect(screenName = "Cart_Screen")
     //ManualTimerEffect(screenName = "CartScreenManualTimer")
     val scope = rememberCoroutineScope()
@@ -84,10 +85,11 @@ fun CartScreen(navigateToCart: ()->Unit, viewModel: CartViewModel = hiltViewMode
                 val cartValue = cart.value
                 viewModel.handleCheckoutCrash()
                 try {
+                    val checkoutId = viewModel.submitPurchaseConfirmation()
                     viewModel.cartRepository.checkout(cartValue!!)
                     viewModel.refreshCart()
                     withContext(Main) {
-                        navigateToCart()
+                        navigateToCart(checkoutId ?: UUID.randomUUID().toString())
                     }
                 } catch (e: Exception) {
                     viewModel.errorHandler.showError(e)

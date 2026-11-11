@@ -13,12 +13,7 @@ import com.bluetriangle.bluetriangledemo.databinding.GridItemProductBinding
 import com.bluetriangle.bluetriangledemo.databinding.ListItemProductBinding
 import com.bluetriangle.bluetriangledemo.utils.PRODUCTS_LAYOUT
 import com.bluetriangle.bluetriangledemo.utils.ProductsLayout
-import com.bluetriangle.bluetriangledemo.utils.dp
 import com.bluetriangle.bluetriangledemo.utils.loadImage
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.MultiTransformation
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 
 class ProductAdapter(
     context: Context,
@@ -69,7 +64,7 @@ class ProductAdapter(
         ProductViewHolder(binding.root) {
         override fun bind(product: Product) {
             binding.apply {
-                productName.text = String.format("%d : %s", product.id, product.name)
+                productName.text = String.format("%s", product.name)
                 productPrice.text = String.format("$%.2f", product.price)
                 productImage.loadImage(product.image, R.drawable.ic_error, imageProgress)
             }

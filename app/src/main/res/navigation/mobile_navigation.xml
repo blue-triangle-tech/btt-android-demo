@@ -48,7 +48,13 @@
             android:id="@+id/navigation_checkout"
             android:name="com.bluetriangle.bluetriangledemo.ui.cart.CheckoutFragment"
             android:label="Checkout"
-            tools:layout="@layout/fragment_checkout" />
+            tools:layout="@layout/fragment_checkout">
+            <argument
+                android:name="checkoutId"
+                app:argType="string"
+                app:nullable="true"
+                android:defaultValue="@null" />
+        </fragment>
 
     </navigation>
 

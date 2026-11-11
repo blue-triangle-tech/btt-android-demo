@@ -5,27 +5,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.bluetriangle.analytics.Timer
-import com.bluetriangle.analytics.Tracker
-import com.bluetriangle.bluetriangledemo.R
 import com.bluetriangle.bluetriangledemo.TrackedFragment
 import com.bluetriangle.bluetriangledemo.adapters.CartItemAdapter
-import com.bluetriangle.bluetriangledemo.adapters.ProductAdapter
-import com.bluetriangle.bluetriangledemo.data.CartItem
-import com.bluetriangle.bluetriangledemo.data.Product
 import com.bluetriangle.bluetriangledemo.databinding.FragmentCartBinding
 import com.bluetriangle.bluetriangledemo.layout.WebCheckOutActivity
-import com.bluetriangle.bluetriangledemo.ui.products.ProductsFragmentDirections
 import com.bluetriangle.bluetriangledemo.utils.AlertDialogState
 import com.bluetriangle.bluetriangledemo.utils.AlertView
-import com.bluetriangle.bluetriangledemo.utils.MANUAL_TIMER_SEGMENT
 import com.bluetriangle.bluetriangledemo.utils.showAlert
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -68,7 +57,8 @@ class CartFragment : TrackedFragment(), AlertView {
 
         binding.checkoutButton.setOnClickListener {
             cartViewModel.handleCheckoutCrash()
-            findNavController().navigate(R.id.action_cart_to_checkout)
+            val checkoutId = cartViewModel.submitPurchaseConfirmation()
+            findNavController().navigate(CartFragmentDirections.actionCartToCheckout(checkoutId))
         }
 
         binding.webCheckoutButton.setOnClickListener {

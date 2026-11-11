@@ -8,11 +8,9 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
@@ -47,7 +45,6 @@ import com.bluetriangle.bluetriangledemo.compose.components.NavItem
 import com.bluetriangle.bluetriangledemo.compose.theme.BlueTriangleComposeDemoTheme
 import com.bluetriangle.bluetriangledemo.utils.copyToClipboard
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.UUID
 
 @AndroidEntryPoint
 class ComposeStoreActivity : ComponentActivity() {
@@ -176,7 +173,7 @@ fun getNavItemsList(navController: NavHostController): List<NavItem> {
             destinations = listOf(
                 NavItem.Destination("Cart", "cart/home") {
                     CartScreen({
-                        navController.navigate("cart/checkout/${UUID.randomUUID()}")
+                        navController.navigate("cart/checkout/$it")
                     })
                 },
                 NavItem.Destination(
